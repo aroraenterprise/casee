@@ -13,6 +13,7 @@
   function SidebarCtrl($log, $scope, $state, caseData, assetService){
     var vm = this;
     vm.case = caseData;
+    vm.dragEnabled = false;
     $scope.assets = assetService.assets.items;
     // vm.list = caseService.list;
     // vm.selectCase = SelectCase;

@@ -145,3 +145,8 @@ tr.angular-ui-tree-empty {
 .angular-ui-tree-nodes.hidden {
   display: none;
 }
+
+.img-responsive {
+    max-width: 200px;
+    max-height: 200px;
+}

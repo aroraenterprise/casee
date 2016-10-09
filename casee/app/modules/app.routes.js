@@ -26,23 +26,23 @@
           controllerAs: 'ctrl'
         }
       }
-    }).state('sidebar.dashboard', {
-          url: '/dashboard',
-          views: {
-            sidebar: {
-              templateUrl: 'modules/dashboard/sidebar.view.html',
-              controller: 'DashboardSidebarCtrl',
-              controllerAs: 'ctrl'
-            },
-            content: {
-              templateUrl: 'modules/dashboard/dashboard.view.html',
-              controller: 'DashboardCtrl',
-              controllerAs: 'ctrl'
-            }
-          }
+    }).state('dashboard', {
+      url: '/dashboard',
+      views: {
+        navigation: {
+          templateUrl: 'modules/layout/navbar.partial.html',
+          controller: 'NavbarCtrl',
+          controllerAs: 'ctrl'
+        },
+        content: {
+          templateUrl: 'modules/dashboard/dashboard.view.html',
+          controller: 'DashboardCtrl',
+          controllerAs: 'ctrl'
         }
-    ).state('sidebar.case', {
+      }
+    }).state('sidebar.case', {
       url: '/case/:key',
+      abstract: true,
       resolve: {
         caseData: GetCase
       },
@@ -58,6 +58,21 @@
           controllerAs: 'ctrl'
         }
       }
+    }).state('sidebar.case.explorer', {
+      url: '/explorer',
+      templateUrl: 'modules/case/partials/case-explorer.partial.html',
+      controller: 'CaseExplorerCtrl',
+      controllerAs: 'ctrl'
+    }).state('sidebar.case.visualizer', {
+      url: '/visualizer',
+      templateUrl: 'modules/case/partials/case-visualizer.partial.html',
+      controller: 'CaseExplorerCtrl',
+      controllerAs: 'ctrl'
+    }).state('sidebar.case.extensions', {
+      url: '/extensions',
+      templateUrl: 'modules/case/partials/case-extensions.partial.html',
+      controller: 'CaseExplorerCtrl',
+      controllerAs: 'ctrl'
     });
   }
 

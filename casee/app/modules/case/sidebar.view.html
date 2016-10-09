@@ -1,4 +1,14 @@
-<md-subheader>Assets</md-subheader>
+<md-subheader>Case: {{ctrl.case.case_id }} : {{ ctrl.case.name }}</md-subheader>
+<md-subheader>Assets:
+  <a href="">{{ctrl.case.path}}</a>
+</md-subheader>
+<div layout="row" flex layout-align="center center">
+  <md-switch ng-model="ctrl.dragEnabled" aria-label="Switch 1">
+    Drag & Drop
+  </md-switch>
+
+</div>
+
 <script type="text/ng-template" id="nodes_renderer.html">
   <div layout="row" ui-tree-handle class="tree-node tree-node-content">
     <span flex>
@@ -19,7 +29,7 @@
     </li>
   </ol>
 </script>
-<div ui-tree id="tree-root">
+<div ui-tree data-drag-enabled="ctrl.dragEnabled" id="tree-root">
   <ol ui-tree-nodes ng-model="assets">
     <li ng-repeat="node in assets" ui-tree-node ng-include="'nodes_renderer.html'"></li>
   </ol>
