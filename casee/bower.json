@@ -31,7 +31,8 @@
     "angular-material": "^1.1.1",
     "restangular": "^1.5.2",
     "mdPickers": "^0.7.5",
-    "ng-electron": "develephant/ng-electron#^0.4.0"
+    "ng-electron": "develephant/ng-electron#^0.4.0",
+    "angular-ui-tree": "^2.22.1"
   },
   "resolutions": {
     "angular": "^1.4.0",

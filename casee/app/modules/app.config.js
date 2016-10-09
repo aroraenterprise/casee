@@ -11,10 +11,16 @@
      */
     angular
         .module('app')
-        .config(function($mdThemingProvider) {
+        .config(function($mdThemingProvider, RestangularProvider) {
             $mdThemingProvider.theme('default')
                 .primaryPalette('pink')
-                .accentPalette('orange')
+                .accentPalette('orange');
+
+            RestangularProvider
+                .setBaseUrl('http://127.0.0.1:8080/api/v1')
+                .setRestangularFields({
+                    id : 'key'
+                });
         })
         .constant('Color', Color());
 

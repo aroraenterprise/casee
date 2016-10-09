@@ -12,7 +12,7 @@
         <md-dialog-content layout="column" class="wwtd-form">
             <md-input-container class="md-block required">
                 <label>Case Id</label>
-                <input ng-model="dialog.data.id" placeholder="e.g. 12021412" required>
+                <input ng-model="dialog.data.case_id" placeholder="e.g. 12021412" required>
             </md-input-container>
 
             <md-input-container class="md-block required">
@@ -23,10 +23,10 @@
             <div layout="row">
                 <md-input-container class="md-block required" flex>
                     <label>Folder Location</label>
-                    <input ng-model="dialog.data.location" required>
+                    <input ng-model="dialog.data.path" required>
                 </md-input-container>
-                <md-button class="md-default md-hue" ng-click="dialog.openFileDialog(dialog.data.location)">
-                        <i class="fa fa-folder"></i> Choose Folder</md-button>
+                <md-button class="md-default md-hue" ng-click="dialog.openFileDialog(dialog.data.path)">
+                    <i class="fa fa-folder"></i> Choose Folder</md-button>
             </div>
 
             <div layout="row" class="md-block wwtd-date-time clearfix">
@@ -36,13 +36,15 @@
 
                 </mdp-date-picker>
             </div>
-            <p class="help-block wwtd-accent-text" ng-if="dialog.errors.datetime">Please specify a start and end date.</p>
+            <p class="help-block wwtd-accent-text" ng-if="dialog.errors.datetime">Please specify a case open date.</p>
 
-            <div class="color-picker md-block">
-                <div md-color-picker="dialog.colorPicker.options"
-                     ng-model="dialog.data.color">
-                </div>
+            <div layout="row" flex>
+                <md-input-container class="md-block" flex-gt-md="75" flex>
+                    <label>Description/Comments</label>
+                    <textarea ng-model="dialog.data.description" rows="3"></textarea>
+                </md-input-container>
             </div>
+
         </md-dialog-content>
         <md-dialog-actions layout="row" layout-align="end end">
             <md-button class="md-flat md-primary" type="submit">

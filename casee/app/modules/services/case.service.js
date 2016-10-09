@@ -8,7 +8,7 @@
     function CaseService($log, $mdDialog, $mdMedia, backendService){
         var factory = {};
         var name = 'case';
-        factory.years = backendService.reset(name);
+        factory.cases = backendService.reset(name);
         factory.create = CreateCase;
         factory.edit = EditCase;
         factory.get = GetCase;
@@ -19,7 +19,7 @@
 
         /// functions
         function CreateCase(data){
-            // return wwtdBackend.create(factory.name, classYear);
+            return backendService.create(factory.name, data);
         }
 
         function EditCase($index){
@@ -48,8 +48,8 @@
             });
             return promise;
         }
-        function GetCase(url){
-            // return wwtdBackend.get(factory.name, url);
+        function GetCase(key){
+            return backendService.get(factory.name, key);
         }
 
         function ListCases(options, cursor){
@@ -60,12 +60,7 @@
              *  class_year: integer
              * Cursor: datastore Cursor
              */
-            // return wwtdBackend.list(factory.name, options, cursor).then(function(){
-            //     angular.forEach(factory.years.items, function(year){
-            //         wwtdBackend.restangular.restangularizeCollection(year, year.terms.items, 'terms', {fromServer: true});
-            //     });
-            //     $log.debug(factory.years);
-            // });
+            return backendService.list(factory.name, options, cursor);
         }
 
         function ResetCases(options){

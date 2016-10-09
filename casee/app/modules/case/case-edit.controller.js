@@ -9,8 +9,13 @@
 
         vm.cancel = Cancel;
         vm.colorPicker = Color.defaultColorPicker;
-        vm.data = data;
-        vm.cases = caseService;
+        vm.data = {
+            case_id: 1,
+            name: 'Saj Arora',
+            path: "C:\\Users\\Saj Arora\\Documents\\GitHub\\depix\\casee",
+            open_date: new Date(),
+            description: 'hello world'
+        };
         vm.data.start_date = vm.data.start_date ? new Date(vm.data.start_date) : new Date();
         vm.data.end_date = vm.data.end_date ? new Date(vm.data.end_date) : null;
         vm.data.color = vm.data.color || Color.getRandomColor();
@@ -46,11 +51,12 @@
         function OpenFileDialog(path) {
             electron.dialog.showOpenDialog(null, {
                 title: 'Choose Case Folder',
-                defaultPath: vm.data.location || null,
+                defaultPath: vm.data.path || null,
                 buttonLabel: 'Pick Case Folder',
                 properties: ['openDirectory']
             }).then(function (result) {
-                vm.data.location = result;
+                if (result.length)
+                    vm.data.path = result[0];
             });
         }
 
@@ -71,7 +77,7 @@
             if (vm.data.key){
                 vm.data.save().then(OnSuccess, OnError);
             } else {
-                vm.cases.all('terms').post(vm.data).then(OnSuccess, OnError);
+                caseService.create(vm.data).then(OnSuccess, OnError);
             }
         }
     }

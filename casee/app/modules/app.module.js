@@ -22,7 +22,8 @@
             'ngMaterial',
             'restangular',
             'mdPickers',
-            'electangular'
+            'electangular',
+            'ui.tree'
         ])
         .constant('_', _);
 })();

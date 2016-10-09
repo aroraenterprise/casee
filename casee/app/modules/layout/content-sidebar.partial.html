@@ -1,7 +1,22 @@
 <!-- Container #2 -->
 <div flex layout="row">
-  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"
-              ui-view="sidebar"></md-sidenav>
+  <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-tall md-hue-2">
+      <span flex></span>
+      <div layout="column" class="md-toolbar-tools-bottom inset">
+        <div class="user-avatar"><img src="images/profile_photo.jpg"/></div>
+        <span></span>
+        <div>Saj Arora</div>
+        <div>saj.arora@nyu.edu</div>
+      </div>
+    </md-toolbar>
+    <md-list>
+      <md-list-item flex layout-align="start center" ng-click="ctrl.goDashboard()">
+        <span><i class="fa fa-dashboard" alt="Dashboard"></i> Dashboard</span>
+      </md-list-item>
+      <div ui-view="sidebar"></div>
+    </md-list>
+  </md-sidenav>
   <md-content flex md-scroll-y
               ui-view="content"></md-content>
 

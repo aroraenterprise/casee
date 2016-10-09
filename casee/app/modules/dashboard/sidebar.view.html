@@ -1,23 +1,9 @@
-<md-toolbar class="md-tall md-hue-2">
-  <span flex></span>
-  <div layout="column" class="md-toolbar-tools-bottom inset">
-    <div class="user-avatar"><img src="images/profile_photo.jpg"/></div>
-    <span></span>
-    <div>Saj Arora</div>
-    <div>saj.arora@nyu.edu</div>
+<md-subheader>Cases</md-subheader>
+<md-list-item flex class="md-2-line" ng-click="ctrl.selectCase(item)"
+              ng-repeat="item in ctrl.cases.items">
+  <img ng-src="{{item.image}}?20" class="md-avatar" alt="{{item.name}}" />
+  <div class="md-list-item-text">
+    <h3>{{item.case_id}}: {{ item.name }}</h3>
+    <p>{{ item.open_date | date: 'shortDate'}}</p>
   </div>
-</md-toolbar>
-<md-list>
-  <md-subheader>Cases</md-subheader>
-  <md-item ng-repeat="item in ctrl.cases">
-    <a>
-      <md-item-content md-ink-ripple layout="row" layout-align="start center">
-        <div class="inset">
-          <ng-md-icon icon="{{item.name}}"></ng-md-icon>
-        </div>
-        <div class="inset">{{item.name}}
-        </div>
-      </md-item-content>
-    </a>
-  </md-item>
-</md-list>
+</md-list-item>

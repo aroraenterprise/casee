@@ -21,6 +21,8 @@ class CaseModel(NexendModel):
     @classmethod
     def create(cls, **kwargs):
         db = cls(
+            case_id=int(kwargs.pop('case_id')),
+            path=str(kwargs.pop('path')),
             **kwargs
         )
         return db

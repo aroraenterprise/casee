@@ -8,25 +8,26 @@
 (function(){
   'use strict';
 
-  angular.module('app').controller('SidebarCtrl', SidebarCtrl);
+  angular.module('app').controller('DashboardSidebarCtrl', SidebarCtrl);
 
-  function SidebarCtrl($log, $http){
+  function SidebarCtrl($log, $state, $mdSidenav, caseService){
     var vm = this;
-
-    vm.cases = [];
+    vm.cases = caseService.cases;
+    vm.list = caseService.list;
+    vm.selectCase = SelectCase;
 
     Activate();
 
-
     ///functions
     function Activate(){
-      GenerateCases();
+      if (!vm.cases.initialized){
+        vm.list().then($log.debug);
+      }
     }
 
-    function GenerateCases(){
-      $http.get('data/cases.json').success(function(data){
-        vm.cases = data;
-      });
+    function SelectCase(item){
+      $state.go('sidebar.case', {key: item.key});
+      $mdSidenav('left').close();
     }
   }
 
