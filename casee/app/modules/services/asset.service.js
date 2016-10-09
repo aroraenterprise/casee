@@ -82,7 +82,7 @@
             var result = [];
             angular.forEach(files, function (file, index) {
                 var stats = GetStats(path.join(srcPath, file));
-                var newAsset = {title: file, dirPath: srcPath, stat: stats};
+                var newAsset = {title: file, dirPath: srcPath, stat: stats, ext: path.extname(file)};
                 if (stats.isDirectory()) { // a directory
                     newAsset.nodes = WalkDirectory(path.join(srcPath, file));
                 }

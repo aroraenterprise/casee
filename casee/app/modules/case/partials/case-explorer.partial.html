@@ -38,12 +38,12 @@
             <md-input-container style="margin-right: 10px;">
                 <label>Sort By</label>
                 <md-select ng-model="ctrl.customFilter">
-                    <md-option ng-repeat="filter in ctrl.filters" value="{{$index}}">{{filter.name}}</md-option>
+                    <md-option ng-repeat="filter in ctrl.filters" value="{{filter.id}}">{{filter.name}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>
                 <label>File Types</label>
-                <md-select ng-model="selectedToppings" multiple>
+                <md-select ng-model="ctrl.fileTypes" multiple>
                     <md-optgroup label="Images">
                         <md-option ng-value="type.name" ng-repeat="type in ctrl.fileTypes
                         | filter: {category: 'images' }">{{type.name}}</md-option>
@@ -57,7 +57,7 @@
         </div>
 
         <md-list>
-            <md-item ng-repeat="item in ctrl.files | filter:ctrl.searchText | orderBy: 'stat.ctime'">
+            <md-item ng-repeat="item in ctrl.files | filter:ctrl.searchText | orderBy: ctrl.customFilter">
                 <md-item-content>
                     <div class="md-tile-content">
                         <h3><a href="" ng-click="ctrl.openFile(item.path)">{{item.title}}</a></h3>

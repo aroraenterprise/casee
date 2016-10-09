@@ -3,14 +3,19 @@
   <div layout="column" layout-fill layout-padding>
     <md-card flex-gt-sm="90" flex-gt-md="80">
       <md-card-content>
-        <h2>My Cases</h2>
+        <h2><i class="fa fa-dashboard"></i> My Cases</h2>
+        <md-divider></md-divider>
         <md-list-item flex class="md-2-line" ng-click="ctrl.selectCase(item)"
                       ng-repeat="item in ctrl.cases.items">
           <div class="md-avatar"><i class="fa fa-2x" ng-class="{'fa-lock': item.close_date, 'fa-unlock': !item.close_date}"
-            ></i></div>
+          ></i></div>
           <div class="md-list-item-text">
-            <h3>{{item.case_id}}: {{ item.name }}</h3>
-            <p>{{ item.open_date | date: 'shortDate'}}</p>
+            <h2>Case: {{item.case_id}} &mdash; {{item.name}}</h2>
+            <h3>Open Date: {{item.open_date | date: 'mediumDate'}}</h3>
+            <h3>Close Date: {{item.close_date ?
+              (item.close_date | date: 'mediumDate') : 'Open Case'}}</h3>
+            <p><strong>{{item.description}}</strong></p>
+            <a href="">{{item.path}}</a>
           </div>
       </md-card-content>
     </md-card>
@@ -19,6 +24,6 @@
 
 
 <md-button class="md-fab fixed-bottom md-primary" aria-label="Start Case"
-  ng-click="ctrl.editCase()">
+           ng-click="ctrl.editCase()">
   <md-icon class="fa fa-plus"></md-icon>
 </md-button>

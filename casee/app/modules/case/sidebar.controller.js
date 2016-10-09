@@ -10,11 +10,15 @@
 
   angular.module('app').controller('CaseSidebarCtrl', SidebarCtrl);
 
-  function SidebarCtrl($log, $scope, $state, caseData, assetService){
+  function SidebarCtrl($log, $scope, electron, $state, caseData, assetService){
     var vm = this;
     vm.case = caseData;
     vm.dragEnabled = false;
+    vm.openItem = function(path){
+      electron.shell.openItem(path);
+    };
     $scope.assets = assetService.assets.items;
+
     // vm.list = caseService.list;
     // vm.selectCase = SelectCase;
 

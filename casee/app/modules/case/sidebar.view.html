@@ -1,6 +1,6 @@
 <md-subheader>Case: {{ctrl.case.case_id }} : {{ ctrl.case.name }}</md-subheader>
 <md-subheader>Assets:
-  <a href="">{{ctrl.case.path}}</a>
+  <a href="" ng-click="ctrl.openItem(ctrl.case.path)">{{ctrl.case.path}}</a>
 </md-subheader>
 <div layout="row" flex layout-align="center center">
   <md-switch ng-model="ctrl.dragEnabled" aria-label="Switch 1">
@@ -29,6 +29,12 @@
     </li>
   </ol>
 </script>
+<div layout="row">
+  <md-button class="md-button md-primary" ng-click="expandAll()" flex>
+    <i class="fa fa-plus"></i> Expand All</md-button>
+  <md-button class="md-button md-accent" ng-click="collapseAll()" flex>
+    <i class="fa fa-minus"></i> Collapse All</md-button>
+</div>
 <div ui-tree data-drag-enabled="ctrl.dragEnabled" id="tree-root">
   <ol ui-tree-nodes ng-model="assets">
     <li ng-repeat="node in assets" ui-tree-node ng-include="'nodes_renderer.html'"></li>

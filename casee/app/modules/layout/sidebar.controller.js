@@ -16,7 +16,7 @@
 
     ///functions
     function GoDashboard(){
-      $state.go('sidebar.dashboard');
+      $state.go('dashboard');
       $mdSidenav('left').close();
     }
   }

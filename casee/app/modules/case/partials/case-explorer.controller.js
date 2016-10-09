@@ -25,12 +25,15 @@
         };
         vm.filters = [
             {
-               name: 'Creation Time'
+                id: 'stat.ctime',
+                name: 'Creation Time'
             },
             {
+                id: 'stat.mtime',
                 name: 'Modified Time'
             },
             {
+                id: 'location',
                 name: 'Location Tags'
             }
         ];
@@ -69,7 +72,8 @@
                 category: 'doc'
             }
 
-        ]
+        ];
+
         Activate();
 
         function Activate(){
