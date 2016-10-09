@@ -11,5 +11,16 @@
             <md-tab-body></md-tab-body>
         </md-tab>
     </md-tabs>
-    <div ui-view layout-align="center center" layout-fill></div>
+    <md-card flex-gt-sm="90" flex-gt-md="80">
+        <md-card-content>
+            <h2>Case: {{ctrl.case.case_id}} &mdash; {{ctrl.case.name}}</h2>
+            <h4>Open Date: {{ctrl.case.open_date | date: 'mediumDate'}}</h4>
+            <h4>Close Date: {{ctrl.case.close_date ?
+                (ctrl.case.close_date | date: 'mediumDate') : 'Open Case'}}</h4>
+            <p style="white-space: pre-wrap">{{ctrl.case.description}}</p>
+
+            <md-divider></md-divider>
+            <div ui-view layout-align="center center" layout-fill></div>
+        </md-card-content>
+    </md-card>
 </div>

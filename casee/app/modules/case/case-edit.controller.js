@@ -10,11 +10,11 @@
         vm.cancel = Cancel;
         vm.colorPicker = Color.defaultColorPicker;
         vm.data = {
-            case_id: 1,
-            name: 'Saj Arora',
+            case_id: 10123092,
+            name: 'Max Henri John',
             path: "C:\\Users\\Saj Arora\\Documents\\GitHub\\depix\\casee",
             open_date: new Date(),
-            description: 'hello world'
+            description: 'Suspect Last seen around NY\nCharges pending\nCase may be related to previous case 100123.'
         };
         vm.data.start_date = vm.data.start_date ? new Date(vm.data.start_date) : new Date();
         vm.data.end_date = vm.data.end_date ? new Date(vm.data.end_date) : null;

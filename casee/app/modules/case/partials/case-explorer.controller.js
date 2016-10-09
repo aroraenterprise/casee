@@ -13,8 +13,7 @@
         vm.assets = assetService.assets.items;
         vm.list = assetService.list;
         vm.querySearch = QuerySearch;
-        vm.files = [];
-        vm.sync = Sync;
+        vm.files = assetService.files;
         vm.tabs = Tabs();
         vm.isImage = function(item){
             return (/\.(gif|jpg|jpeg|tiff|png)$/i).test(item.title)
@@ -77,18 +76,6 @@
         Activate();
 
         function Activate(){
-            ParseFiles();
-        }
-
-        function ParseFiles(directory){
-            angular.forEach(directory && directory.nodes ? directory.nodes : vm.assets, function(asset){
-                if (!asset.stat.isDirectory()){
-                    asset.path = asset.dirPath + '\\' + asset.title;
-                    vm.files.push(asset);
-                } else {
-                    ParseFiles(asset);
-                }
-            });
         }
 
         function QuerySearch(query){

@@ -42,7 +42,7 @@
                 }
             });
             promise.then(function (data) {
-                if ($index == -1) {
+                if (!$index || $index == -1) {
                     factory.cases.items.unshift(data);
                 }
             });

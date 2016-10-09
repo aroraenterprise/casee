@@ -23,7 +23,8 @@
             'restangular',
             'mdPickers',
             'electangular',
-            'ui.tree'
+            'ui.tree',
+            'nvd3'
         ])
         .constant('_', _);
 })();

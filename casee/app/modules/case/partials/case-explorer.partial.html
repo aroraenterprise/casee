@@ -1,28 +1,20 @@
-<md-card flex-gt-sm="90" flex-gt-md="80">
-    <md-card-content>
-        <h2>Case: {{ctrl.case.case_id}} &mdash; {{ctrl.case.name}}</h2>
-        <h4>Open Date: {{ctrl.case.open_date | date: 'mediumDate'}}</h4>
-        <h4>Close Date: {{ctrl.case.close_date ?
-            (ctrl.case.close_date | date: 'mediumDate') : 'Open Case'}}</h4>
-        <p>{{ctrl.case.description}}</p>
 
-        <md-divider></md-divider>
-        <md-autocomplete
-                md-selected-item="ctrl.selectedItem"
-                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-                md-search-text="ctrl.searchText"
-                md-selected-item-change="ctrl.selectedItemChange(item)"
-                md-items="item in ctrl.querySearch(ctrl.searchText)"
-                md-item-text="item.title + ' - ' + item.stat.ctime"
-                md-min-length="0"
-                placeholder="Case Search"
-                md-menu-class="autocomplete-custom-template">
-            <md-item-template>
+<md-autocomplete
+        md-selected-item="ctrl.selectedItem"
+        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+        md-search-text="ctrl.searchText"
+        md-selected-item-change="ctrl.selectedItemChange(item)"
+        md-items="item in ctrl.querySearch(ctrl.searchText)"
+        md-item-text="item.title + ' - ' + item.stat.ctime"
+        md-min-length="0"
+        placeholder="Case Search"
+        md-menu-class="autocomplete-custom-template">
+    <md-item-template>
           <span class="item-title">
             <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
             <span> {{item.title}} </span>
           </span>
-                <span class="item-metadata">
+        <span class="item-metadata">
             <span class="item-metastat">
               <strong>{{item.stat.ctime | date: 'fullDate'}}</strong>
             </span>
@@ -30,56 +22,54 @@
               <strong>Size: {{item.stat.size}}</strong>
             </span>
           </span>
-            </md-item-template>
-        </md-autocomplete>
+    </md-item-template>
+</md-autocomplete>
 
-        <div layout="row">
-            <span flex></span>
-            <md-input-container style="margin-right: 10px;">
-                <label>Sort By</label>
-                <md-select ng-model="ctrl.customFilter">
-                    <md-option ng-repeat="filter in ctrl.filters" value="{{filter.id}}">{{filter.name}}</md-option>
-                </md-select>
-            </md-input-container>
-            <md-input-container>
-                <label>File Types</label>
-                <md-select ng-model="ctrl.fileTypes" multiple>
-                    <md-optgroup label="Images">
-                        <md-option ng-value="type.name" ng-repeat="type in ctrl.fileTypes
+<div layout="row">
+    <span flex></span>
+    <md-input-container style="margin-right: 10px;">
+        <label>Sort By</label>
+        <md-select ng-model="ctrl.customFilter">
+            <md-option ng-repeat="filter in ctrl.filters" value="{{filter.id}}">{{filter.name}}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>File Types</label>
+        <md-select ng-model="ctrl.fileTypes" multiple>
+            <md-optgroup label="Images">
+                <md-option ng-value="type.name" ng-repeat="type in ctrl.fileTypes
                         | filter: {category: 'images' }">{{type.name}}</md-option>
-                    </md-optgroup>
-                    <md-optgroup label="Documents">
-                        <md-option ng-value="type.name" ng-repeat="type in ctrl.fileTypes
+            </md-optgroup>
+            <md-optgroup label="Documents">
+                <md-option ng-value="type.name" ng-repeat="type in ctrl.fileTypes
                         | filter: {category: 'doc' }">{{type.name}}</md-option>
-                    </md-optgroup>
-                </md-select>
-            </md-input-container>
-        </div>
+            </md-optgroup>
+        </md-select>
+    </md-input-container>
+</div>
 
-        <md-list>
-            <md-item ng-repeat="item in ctrl.files | filter:ctrl.searchText | orderBy: ctrl.customFilter">
-                <md-item-content>
-                    <div class="md-tile-content">
-                        <h3><a href="" ng-click="ctrl.openFile(item.path)">{{item.title}}</a></h3>
-                        <h4>{{item.stat.ctime | date: 'fullDate'}}</h4>
-                        <img class="img-responsive" ng-if="ctrl.isImage(item)" src="{{item.path}}"/>
-                        <p>Folder: <a href="" ng-click="ctrl.openFile(item.dirPath)">{{item.dirPath}}</a></p>
-                        <div layout="row" flex>
-                            <md-input-container flex>
-                                <label>Notes</label>
-                                <textarea ng-model="item.notes" rows="2"></textarea>
-                            </md-input-container>
-                        </div>
-                    </div>
-                </md-item-content>
-            </md-item>
-            <md-divider></md-divider>
-            <md-item layout class="inset">
-                <md-button layout layout-align="start center" flex class="md-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
-                </md-button>
-            </md-item>
-        </md-list>
-    </md-card-content>
-</md-card>
+<md-list>
+    <md-item ng-repeat="item in ctrl.files | filter:ctrl.searchText | orderBy: ctrl.customFilter">
+        <md-item-content>
+            <div class="md-tile-content">
+                <h3><a href="" ng-click="ctrl.openFile(item.path)">{{item.title}}</a></h3>
+                <h4>{{item.stat.ctime | date: 'fullDate'}}</h4>
+                <img class="img-responsive" ng-if="ctrl.isImage(item)" src="{{item.path}}"/>
+                <p>Folder: <a href="" ng-click="ctrl.openFile(item.dirPath)">{{item.dirPath}}</a></p>
+                <div layout="row" flex>
+                    <md-input-container flex>
+                        <label>Notes</label>
+                        <textarea ng-model="item.notes" rows="2"></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-item-content>
+    </md-item>
+    <md-divider></md-divider>
+    <md-item layout class="inset">
+        <md-button layout layout-align="start center" flex class="md-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+        </md-button>
+    </md-item>
+</md-list>

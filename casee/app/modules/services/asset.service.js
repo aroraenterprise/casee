@@ -12,6 +12,7 @@
         var fileIndex = [];
         factory.case = null;
         factory.assets = backendService.reset(name);
+        factory.files = [];
         factory.create = CreateAsset;
         factory.edit = EditAsset;
         factory.get = GetAsset;
@@ -91,10 +92,23 @@
             return result;
         }
 
+        function ParseFiles(directory, count){
+            angular.forEach(directory && directory.nodes ? directory.nodes : factory.assets.items, function(asset){
+                if (!asset.stat.isDirectory()){
+                    asset.path = asset.dirPath + '\\' + asset.title;
+                    asset.group = count;
+                    factory.files.push(asset);
+                } else {
+                    ParseFiles(asset, count);
+                }
+            });
+        }
+
         function Sync(srcPath){
             var _deferred = $q.defer();
             var callable = function(){
                 factory.assets.items = WalkDirectory(srcPath);
+                ParseFiles(factory.assets.items, 0);
                 _deferred.resolve();
             };
             callable();

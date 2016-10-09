@@ -11,10 +11,10 @@
           ></i></div>
           <div class="md-list-item-text">
             <h2>Case: {{item.case_id}} &mdash; {{item.name}}</h2>
-            <h3>Open Date: {{item.open_date | date: 'mediumDate'}}</h3>
+            <h3>Open Date: {{item.open_date | date: 'fullDate'}}</h3>
             <h3>Close Date: {{item.close_date ?
-              (item.close_date | date: 'mediumDate') : 'Open Case'}}</h3>
-            <p><strong>{{item.description}}</strong></p>
+              (item.close_date | date: 'fullDate') : 'Open Case'}}</h3>
+            <p style="white-space: pre-wrap"><strong>{{item.description}}</strong></p>
             <a href="">{{item.path}}</a>
           </div>
       </md-card-content>

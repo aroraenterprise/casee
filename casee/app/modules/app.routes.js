@@ -66,7 +66,7 @@
     }).state('sidebar.case.visualizer', {
       url: '/visualizer',
       templateUrl: 'modules/case/partials/case-visualizer.partial.html',
-      controller: 'CaseExplorerCtrl',
+      controller: 'CaseVisualizerCtrl',
       controllerAs: 'ctrl'
     }).state('sidebar.case.extensions', {
       url: '/extensions',
