@@ -1,0 +1,23 @@
+<md-toolbar class="md-tall md-hue-2">
+  <span flex></span>
+  <div layout="column" class="md-toolbar-tools-bottom inset">
+    <div class="user-avatar"><img src="images/profile_photo.jpg"/></div>
+    <span></span>
+    <div>Saj Arora</div>
+    <div>saj.arora@nyu.edu</div>
+  </div>
+</md-toolbar>
+<md-list>
+  <md-subheader>Cases</md-subheader>
+  <md-item ng-repeat="item in ctrl.cases">
+    <a>
+      <md-item-content md-ink-ripple layout="row" layout-align="start center">
+        <div class="inset">
+          <ng-md-icon icon="{{item.name}}"></ng-md-icon>
+        </div>
+        <div class="inset">{{item.name}}
+        </div>
+      </md-item-content>
+    </a>
+  </md-item>
+</md-list>

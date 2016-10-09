@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Casee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../bower_components/mdPickers/dist/mdPickers.min.css" />
+  <link href="styles/main.css" rel="stylesheet">
+</head>
+<body ng-app="app">
+
+<div ui-view="navigation">
+</div>
+<div ui-view="content" flex>
+</div>
+<!--<div style="position: absolute; left: 10px; right: 10px; top: 10px; bottom: 10px;">-->
+<!--<div class="well" style="float: left; width: 160px; padding: 8px;">-->
+<!--<ul class="nav nav-list" id="sidebar">-->
+<!--<li class="nav-header">Cases</li>-->
+<!--<li class="active" ng-repeat="item in ctrl.cases">-->
+<!--<a href="#" nw-path="~/"><i class="icon-white icon-home"></i> {{item.id}}: {{item.name}}</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="#" nw-path="~/Documents"><i class="icon-book"></i> Documents</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="#" nw-path="~/Pictures"><i class="icon-picture"></i> Pictures</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="#" nw-path="~/Music"><i class="icon-music"></i> Music</a>-->
+<!--</li>-->
+<!--<li>-->
+<!--<a href="#" nw-path="~/Movies"><i class="icon-film"></i> Movies</a>-->
+<!--</li>-->
+<!--<li class="nav-header">Network</li>-->
+<!--<li class="divider"></li>-->
+<!--<li><a href="#" nw-call="about" onclick="App.about()"><i class="icon-flag"></i> About</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+
+<!--<div style="float: left; position: absolute; left: 210px; right: 0; top: 0; bottom: 50px">-->
+<!--<div class="row">-->
+<!--<ul id="addressbar" class="breadcrumb"></ul>-->
+<!--</div>-->
+<!--<div class="row" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">-->
+<!--<ul style="margin: 5px;" id="files"></ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!-- build:js scripts/vendor.js -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-resource/angular-resource.js"></script>
+<script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="../bower_components/angular-touch/angular-touch.js"></script>
+<script src="../bower_components/skel/src/skel.js"></script>
+<script src="../bower_components/jquery-scrolly/jquery.scrolly.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/angular-material/angular-material.js"></script>
+<script src="../bower_components/lodash/lodash.js"></script>
+<script src="../bower_components/restangular/dist/restangular.min.js"></script>
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/mdPickers/dist/mdPickers.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:app scripts/app.js -->
+<script src="modules/electangular.js"></script>
+<script src="modules/app.module.js"></script>
+<script src="modules/app.config.js"></script>
+<script src="modules/app.routes.js"></script>
+
+
+<script src="modules/home/home.controller.js"></script>
+<script src="modules/layout/navbar.controller.js"></script>
+<script src="modules/case/case-edit.controller.js"></script>
+<script src="modules/dashboard/sidebar.controller.js"></script>
+<script src="modules/dashboard/dashboard.controller.js"></script>
+<script src="modules/services/backend.service.js"></script>
+<script src="modules/services/case.service.js"></script>
+
+<!-- endbuild -->
+
+<!--<script type="text/javascript" src="js/jquery-1.7.2.js"></script>-->
+<!--<script type="text/javascript" src="script.js"></script>-->
+
+</body>
+</html>

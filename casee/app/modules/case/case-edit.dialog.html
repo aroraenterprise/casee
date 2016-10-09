@@ -1,0 +1,53 @@
+<md-dialog aria-label="Class Year Edit" id="dialog-wrapper" ng-cloak flex>
+    <form name="htForm" ng-submit="dialog.submit()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span><i class="fa fa-plus-circle"></i> New Case</span>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="dialog.cancel()">
+                    <md-icon class="fa fa-times" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" class="wwtd-form">
+            <md-input-container class="md-block required">
+                <label>Case Id</label>
+                <input ng-model="dialog.data.id" placeholder="e.g. 12021412" required>
+            </md-input-container>
+
+            <md-input-container class="md-block required">
+                <label>Case Name</label>
+                <input ng-model="dialog.data.name" placeholder="e.g. Jane Doe - NY" required>
+            </md-input-container>
+
+            <div layout="row">
+                <md-input-container class="md-block required" flex>
+                    <label>Folder Location</label>
+                    <input ng-model="dialog.data.location" required>
+                </md-input-container>
+                <md-button class="md-default md-hue" ng-click="dialog.openFileDialog(dialog.data.location)">
+                        <i class="fa fa-folder"></i> Choose Folder</md-button>
+            </div>
+
+            <div layout="row" class="md-block wwtd-date-time clearfix">
+                <mdp-date-picker mdp-placeholder="Case Open Date" ng-model="dialog.data.start_date"
+                                 required></mdp-date-picker>
+                <mdp-date-picker mdp-placeholder="Case Close Date" ng-model="dialog.data.end_date">
+
+                </mdp-date-picker>
+            </div>
+            <p class="help-block wwtd-accent-text" ng-if="dialog.errors.datetime">Please specify a start and end date.</p>
+
+            <div class="color-picker md-block">
+                <div md-color-picker="dialog.colorPicker.options"
+                     ng-model="dialog.data.color">
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" layout-align="end end">
+            <md-button class="md-flat md-primary" type="submit">
+                <i class="fa fa-check-circle"></i> {{ dialog.data.key ? 'Save' : 'Create'}}</md-button>
+            <md-button ng-click="dialog.cancel()" class="md-flat">Cancel</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
