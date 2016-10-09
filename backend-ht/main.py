@@ -13,7 +13,7 @@ import config
 app = Flask(__name__)
 app.config.from_object(config)
 
-base_url = '/%s/%s' % (config.BASE_URL, config.API_VERSION)
+base_url = '/%s/%s' % (config.BASE_URL, config.VERSION)
 api = Api(app)
 routes.add_routes(api, base_url)
 CORS(app)

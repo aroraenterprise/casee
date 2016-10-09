@@ -5,3 +5,5 @@
 # Summary: Configuration
 
 DEVELOPMENT = True
+BASE_URL = 'api'
+VERSION = 'v1'
