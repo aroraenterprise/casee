@@ -7,8 +7,7 @@
         <md-divider></md-divider>
         <md-list-item flex class="md-2-line" ng-click="ctrl.selectCase(item)"
                       ng-repeat="item in ctrl.cases.items">
-          <div class="md-avatar"><i class="fa fa-2x" ng-class="{'fa-lock': item.close_date, 'fa-unlock': !item.close_date}"
-          ></i></div>
+          <img class="md-avatar" style="width:100px;height:100px" src="images/{{$index + 1}}.jpg"/>
           <div class="md-list-item-text">
             <h2>Case: {{item.case_id}} &mdash; {{item.name}}</h2>
             <h3>Open Date: {{item.open_date | date: 'fullDate'}}</h3>

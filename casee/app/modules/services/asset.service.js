@@ -9,10 +9,11 @@
     function AssetService($log, $q, $mdDialog, $mdMedia, backendService){
         var factory = {};
         var name = 'asset';
-        var fileIndex = [];
+        var id = 0;
         factory.case = null;
         factory.assets = backendService.reset(name);
         factory.files = [];
+        factory.links = [];
         factory.create = CreateAsset;
         factory.edit = EditAsset;
         factory.get = GetAsset;
@@ -97,10 +98,20 @@
                 if (!asset.stat.isDirectory()){
                     asset.path = asset.dirPath + '\\' + asset.title;
                     asset.group = count;
+                    asset.dir = false;
                     factory.files.push(asset);
                 } else {
+                    asset.path = asset.dirPath + '\\' + asset.title;
+                    asset.dir = true;
+                    asset.group = count++;
+                    factory.files.push(asset);
                     ParseFiles(asset, count);
                 }
+                if (count !== 0) {
+                    var link = {source: id, target: count, value: 8};
+                    factory.links.push(link);
+                }
+                id++;
             });
         }
 
@@ -109,6 +120,7 @@
             var callable = function(){
                 factory.assets.items = WalkDirectory(srcPath);
                 ParseFiles(factory.assets.items, 0);
+                $log.debug(factory.links);
                 _deferred.resolve();
             };
             callable();
